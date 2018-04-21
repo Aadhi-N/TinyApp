@@ -1,0 +1,19 @@
+<a href="/urls">
+	<h1>My TinyApp Project</h1>
+</a>
+
+
+<% if(user == undefined){ %>
+	<form method="POST" action="/login">
+		<a href="/login">Login</a>
+		<a href="/register">Register</a>
+	</form>
+	<% } else { %>
+		<form method="POST" action="/logout">
+			<input type="submit" value="Logout" />
+			<p>Username:
+				<%=users[user].email%>
+			</p>
+		</form>
+		<% } %>
+			<a href="/urls/new">Make New URL</a>

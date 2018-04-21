@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<% include partials/_header.ejs %>
+
+		<title>TinyApp</title>
+</head>
+
+<body>
+	<ul>
+		<% for (var i = 0; i < urlDatabase.length; i++) { %>
+			<li>
+				<%= urlDatabase[i].shortURL %> --->
+					<%= urlDatabase[i].longURL %>
+						<a href="/urls/<%= urlDatabase[i].shortURL %>">Edit</a>
+						<form method="POST" action="/urls/<%= urlDatabase[i].shortURL %>/delete">
+							<input type="submit" value="Delete" />
+						</form>
+
+			</li>
+			<% } %>
+	</ul>
+
+
+</body>
+
+</html>
