@@ -269,7 +269,7 @@ app.post("/login", (req, res) => {
     }
 
     if (foundUser) {
-      if (bcrypt.compareSync(password, hashedPassword)) {
+      if (bcrypt.compareSync(password, foundUser.password)) {
         req.session["user_id"] = foundUser.id;
         res.redirect("/urls");
       } else {
@@ -279,6 +279,12 @@ app.post("/login", (req, res) => {
       res.end("<html><body><h1>403 Error</h1></body></html>");
     }
   }
+
+  if (email === "" || password === "") {
+    res.redirect("/error");
+  } else {
+    res.redirect("/urls");
+  };
 });
 
 app.listen(PORT, () => {
